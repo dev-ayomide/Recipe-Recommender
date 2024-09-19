@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
+import { AiOutlineDownload } from "react-icons/ai";
+
 
 function ImageCook() {
 	const [image, setImage] = useState(null);
@@ -7,6 +9,7 @@ function ImageCook() {
 	const [loading, setLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [recipe, setRecipe] = useState(null); 
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleImageUpload = (event) => {
 		const file = event.target.files[0];
@@ -144,12 +147,12 @@ function ImageCook() {
 			)}
 
 			{recipe && (
-				<div className="min-h-screen  p-8">
+				<div className="min-h-screen p-8">
 					<div className="my-12">
 						<h2 className="text-center text-2xl font-bold text-gray-700 mb-4">
 							Ingredients
 						</h2>
-						<div className="card-body w-[95%] m-auto bg-white shadow-lg shadow-blue-200 p-6 rounded-lg">
+						<div className="card-body w-[95%] m-auto bg-white shadow-lg shadow-blue-200 p-6 rounded-lg relative">
 							<button
 								onClick={downloadIngredients}
 								className="absolute top-4 right-4 bg-blue-500 text-white p-2 rounded-md"
